@@ -6,3 +6,5 @@ class Product(models.Model):
     author = models.CharField(max_length=50)
     thumbnail_url = models.CharField(max_length=200)
     details_url = models.CharField(max_length=200)
+    def __str__(self):
+        return self.title
