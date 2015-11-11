@@ -188,12 +188,12 @@
         // },
 
         render: function() {
-          var listLength, currentRow, rowStart, rowEnd, slice, rows = [];
+          var rowStart, rowEnd, slice, rows = [];
           for (var i = 0; i <= 4; i++) {
             rowStart = i * 4
             rowEnd = ((i + 1) * 4)
             slice = this.state.list.slice(rowStart, rowEnd)
-            rows.push(<Row list={slice} key={i}/>)
+            rows.push(<CreateRow list={slice} key={i}/>)
           }
           return (
             <div>
@@ -210,7 +210,7 @@
 
       });
 
-      var Row = React.createClass({
+      var CreateRow = React.createClass({
         render: function() {
           var results = this.props.list;
           return (
