@@ -9,7 +9,7 @@
 
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'discover/style.css' %}" />
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <div class="col-med-offset-2 col-med-8" id='discover'>
+    <div class="col-md-offset-1 col-md-10" id='discover'>
 
     </div>
 
@@ -218,7 +218,7 @@
               {results.map(function(item, index) {
                 return (
                   <div className="col-sm-3 product" key={index}>
-                    <img src={item.thumbnail_url} className="thumbnail"/>
+                    <img src={item.thumbnail_url} className="thumbnail" />
                     <p className="title">
                       <a href={item.detials_url}>{item.title}</a>
                     </p>
