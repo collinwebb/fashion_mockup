@@ -13,15 +13,33 @@ var DiscoverFashion = React.createClass({
   },
 
   componentDidMount: function() {
-    $.get("json_data", function(result) {
+    $.get("json_data/" + this.state.page, function(result) {
       console.log(result);
       if (this.isMounted()) {
         this.setState({
-          page: 0, number_of_products: result.length,
+          page: this.state.page, number_of_products: result.length,
           list: result
         });
       }
     }.bind(this));
+
+    var blankLastPage = this.state.list.length === 0;
+    var notFirstPage = this.state.page > 0
+    if (blankLastPage && notFirstPage){
+      this.state.page -= 1;
+      this.componentDidMount();
+    }
+  },
+
+  handleClick: function(direction) {
+    var onFirstPageGoPrev = this.state.page === 0 && direction === -1;
+    var onLastPageGoNext = this.state.number_of_products < 20 && direction === 1; //temp
+    if (onFirstPageGoPrev || onLastPageGoNext){
+      direction = 0;
+    }
+
+    this.state.page += direction;
+    this.componentDidMount();
   },
 
   render: function() {
@@ -32,13 +50,14 @@ var DiscoverFashion = React.createClass({
       slice = this.state.list.slice(rowStart, rowEnd);
       rows.push(<CreateRow list={slice} key={i}/>);
     }
+
     return (
       <div>
         {rows}
         <nav>
           <ul className="pager">
-            <li><a href="#">Previous</a></li>
-            <li><a href="json_data">Next</a></li>
+            <li><a onClick={this.handleClick.bind(this, -1)}>Previous</a></li>
+            <li><a onClick={this.handleClick.bind(this, 1)}>Next</a></li>
           </ul>
         </nav>
       </div>

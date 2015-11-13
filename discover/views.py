@@ -10,6 +10,9 @@ def index(request):
     return HttpResponse(template.render(context))
 
 
-def json_data(request):
-    data = serializers.serialize('json', Product.objects.all()[0:20])
+def json_data(request, page):
+    start = int(page) * 20
+    end = start + 20
+    itemSelector = Product.objects.all()[start:end]
+    data = serializers.serialize('json', itemSelector)
     return HttpResponse(data, content_type='application/json')
