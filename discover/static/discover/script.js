@@ -25,12 +25,12 @@ var DiscoverFashion = React.createClass({
 
   componentDidMount: function() {
     $.get("json_data/" + this.state.page, function(result) {
-      var anythingLoaded = result.length > 0;
+      var full20Loaded = result.length === 20;
 
       if (this.isMounted()) {
         this.setState({
           doneLoading: true,
-          listNotComplete: anythingLoaded,
+          listNotComplete: full20Loaded,
           page: this.state.page,
           list: this.state.list.concat(result)
         });
