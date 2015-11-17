@@ -12,7 +12,7 @@ var DiscoverFashion = React.createClass({
     var $r = this;
 
     $(window).scroll(function () {
-      if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
+      if ($(window).scrollTop() >= $(document).height() - $(window).height() - 200) {
         // to prevent excess loading:
         if ($r.state.listNotComplete && $r.state.doneLoading) {
           $r.state.doneLoading = false;
@@ -54,21 +54,29 @@ var DiscoverFashion = React.createClass({
 
 });
 
+function simpleTruncate (sentence, numberOfWords) {
+  var sentenceArray = sentence.split(" ");
+  return sentenceArray.slice(0, numberOfWords).join(" ");
+}
+
 var CreateRow = React.createClass({
   render: function() {
-    var results = this.props.list, item;
+    var results = this.props.list, item, link, shortenedBlurb;
     return (
       <div className="row">
         {results.map(function(data, index) {
           item = data.fields;
+          link = item.details_url;
+          shortenedBlurb = simpleTruncate(item.blurb, 32);
           return (
             <div className="col-sm-3 product" key={index}>
               <img src={item.thumbnail_url} className="thumbnail" />
-              <p className="title">
-                <a href={item.detials_url}>{item.title}</a>
-              </p>
+              <p className="title">{item.title}</p>
               <p className="author">by {item.author}</p>
-              <p className="blurb">{item.blurb}</p>
+              <p className="blurb">
+                {shortenedBlurb}
+                <a className="link" href={link}> read more</a>
+              </p>
             </div>
           );
         })}
