@@ -1,7 +1,8 @@
 ## example fashion app
 
-Warning: the following link leads to adorableness. I find using fun/cute/adorable pictures as my placeholders increases my productivity (endorphins, etc).
-[Heroku instance here](https://discover-fashion.herokuapp.com/)
+Warning: the following link leads to adorableness.
+[Heroku instance here](https://discover-fashion.herokuapp.com/).
+I find using fun/cute/adorable pictures as my placeholders increases my productivity (endorphins, etc).
 
 ####Overview
 
