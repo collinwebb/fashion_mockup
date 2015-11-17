@@ -71,7 +71,7 @@ var CreateRow = React.createClass({
           return (
             <div className="col-sm-3 product" key={index}>
               <img src={item.thumbnail_url} className="thumbnail" />
-              <p className="title">{item.title}</p>
+              <h4 className="title">{item.title}</h4>
               <p className="author">by {item.author}</p>
               <p className="blurb">
                 {shortenedBlurb}

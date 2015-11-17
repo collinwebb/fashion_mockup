@@ -1,3 +1,7 @@
+p {
+  margin-bottom: 0.4rem;
+}
+
 .product {
   padding: 0.5rem;
 }
@@ -5,12 +9,18 @@
 .thumbnail {
   min-width: 100%;
   max-width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .title {
   text-align: center;
+  margin-top: 0;
+  margin-bottom: .4rem;
+  margin-top: .4rem;
 }
 
 .author {
   text-align: center;
+  font-size: 13px;
+  margin-bottom: .5rem;
 }
